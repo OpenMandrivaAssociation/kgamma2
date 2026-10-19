@@ -27,6 +27,9 @@ BuildRequires:	pkgconfig(lcms2)
 Requires:	kf6-kirigami
 Requires:	qml(org.kde.desktop)
 BuildSystem:	cmake
+# find_package(ECM) has no version, so ECM defaults to Qt 5 and
+# KDEInstallDirs then requires Qt 5 qmake. Cooker aarch64 has no qmake.
+BuildOption:	-DBUILD_WITH_QT6:BOOL=ON
 
 %description
 Standalone Wayland tool that writes an sRGB ICC profile with a VCGT gamma
